@@ -1,0 +1,185 @@
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #6e33f1, #b449ff);
+    z-index: 100;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 2rem;
+    margin: 1rem 1.5rem;
+}
+
+.nav__logo {
+    color: #f39849;
+    transition: color 0.4s;
+    font-size: 2rem;
+    font-family: "Dancing Script",
+        cursive;
+    text-shadow: 0px 2px 2px rgb(0, 0, 0);
+}
+
+.nav__toggle,
+.nav__close {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    display: flex;
+}
+
+.nav__btn {
+    background-color: #d89f35;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav__btn:hover {
+    color: orange;
+    background-color: white;
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    /* align-items: center; */
+}
+
+.nav__link {
+    color: white;
+    font-weight: 600;
+    transition: color 0.2s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.712);
+}
+
+.nav__link:hover {
+    color: orange;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.userImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+.option {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.418);
+    border-radius: 5px;
+    transition: opacity 0.3s ease, display 0.3s ease;
+}
+
+.option.show {
+    opacity: 1;
+    display: flex;
+}
+
+.option a {
+    color: #6e33f1;
+    font-weight: 600;
+    margin: 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.option a:hover {
+    color: black;
+    background-color: rgb(226, 225, 225);
+}
+
+.option .logout:hover {
+    color: white;
+    background-color: red;
+}
+
+/* Screen < 768px */
+@media screen and (max-width: 767px) {
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background-color: rgb(15 15 15 / 40%);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        width: 70%;
+        height: 100%;
+        padding: 6rem 3rem 0;
+        transition: right 0.4s;
+    }
+
+    .show-menu {
+        right: 0;
+    }
+
+    .option {
+        left: 0;
+        display: none;
+    }
+
+    .userProfileMobile {
+        opacity: 1;
+        position: absolute;
+        right: 50px;
+        cursor: pointer;
+    }
+
+    .userProfileDesktop {
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* screen > 768px  */
+@media screen and (min-width: 768px) {
+
+    .userProfileMobile {
+        opacity: 0;
+        display: none;
+    }
+
+    .userProfileDesktop {
+        opacity: 1;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .nav__toggle,
+    .nav__close {
+        display: none;
+    }
+
+    .nav__list {
+        flex-direction: row;
+        column-gap: 2.5rem;
+        align-items: center;
+    }
+
+    .option {
+        right: 0;
+        display: none;
+    }
+}

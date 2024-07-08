@@ -1,0 +1,47 @@
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.otp-inputs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.otp-inputs input {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-otp {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #6e33f1, #b449ff);
+    cursor: pointer;
+}
+
+.resend-otp {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[disabled] {
+    background-color: #0077ff;
+    cursor: not-allowed;
+    opacity: 0.8;
+}

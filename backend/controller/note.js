@@ -1,0 +1,124 @@
+import noteModel from '../Models/noteModel.js';
+
+// @GET ("/notes")
+export const getAllNote = async (req, res) => {
+
+    try {
+        const userId = req.userInfo;
+        const notes = await noteModel.find({ userId });
+        res.status(201).json({
+            count: notes.length,
+            notes: notes
+        });
+    } catch (error) {
+        res.status(400).json({
+            error_message: 'Something went wrong ' + error
+        });
+    }
+
+};
+
+// @POST ("/notes")
+export const newNote = async (req, res) => {
+
+    try {
+        const userId = req.userInfo;
+        const title = req.body.title;
+        const desc = req.body.desc;
+        const dateTime = new Date();
+        const date = dateTime.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+        const pinned = req.body.pinned;
+        const color = req.body.color;
+        const tags = req.body.tags;
+
+        const newNote = new noteModel({
+            userId,
+            title,
+            desc,
+            date,
+            pinned,
+            color,
+            tags
+        });
+
+        await newNote.save();
+
+        res.status(201).json({
+            success_message: 'Note added successfully',
+            newNote: newNote
+        });
+    } catch (error) {
+        res.status(400).json({
+            error_message: 'Something went wrong ' + error
+        });
+    }
+};
+
+// @PUT ("/notes/:noteId")
+export const updateNote = async (req, res) => {
+    try {
+        const userId = req.userInfo;
+        const noteId = req.params.noteId;
+        const { title, desc, color, tags } = req.body; 
+        const dateTime = new Date();
+        const date = dateTime.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+        const note = await noteModel.findOne({ _id: noteId });
+
+        if (note && note.userId.equals(userId)) {
+            note.title = title;
+            note.desc = desc;
+            note.date = date;
+            note.color = color;
+            note.tags = tags.split(',').map(tag => tag.trim());
+
+            const updatedNote = await note.save();
+
+            return res.status(200).json({
+                success_message: 'Note updated successfully'
+            });
+        } else {
+            return res.status(404).json({
+                error_message: 'Note not found or Unauthorized',
+            });
+        }
+    } catch (error) {
+        return res.status(400).json({
+            error_message: 'Something went wrong: ' + error.message,
+        });
+    }
+};
+
+// @DELETE ("/notes/:noteId")
+export const deleteNote = async (req, res) => {
+    try {
+        const userId = req.userInfo;
+        const noteId = req.params.noteId;
+
+        const note = await noteModel.findOne({ _id: noteId });
+
+        if (note) {
+            if (note.userId.equals(userId)) {
+
+                const deletedNote = await noteModel.findByIdAndDelete(noteId);
+                if (!deletedNote) {
+                    return res.status(404).json({
+                        error_message: 'Note not deleted'
+                    });
+                }
+                return res.status(200).json({
+                    success_message: 'Note deleted successfully',
+                });
+            }
+        } else {
+            return res.status(404).json({
+                error_message: 'Note not found..'
+            });
+        }
+    } catch (error) {
+        res.status(400).json({
+            error_message: 'Something went wrong ' + error
+        });
+    }
+};
+
