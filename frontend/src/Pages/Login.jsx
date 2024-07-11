@@ -5,7 +5,7 @@ import "../Styles/Login.css";
 import Navbar from './../Components/NavBar';
 import Footer from './../Components/Footer';
 
-import { setToken } from "../Components/auth.js";
+import { setToken } from "../Components/api/auth.js";
 
 const Login = () => {
   const [formData, setFormData] = useState({

@@ -1,4 +1,4 @@
-import axios from '../axiosConfig.js';
+import axios from '../../axiosConfig.js';
 import { getToken } from './auth.js';
 
 export async function fetchNotes() {
@@ -52,7 +52,7 @@ export async function createNote(formData) {
 export async function updateNote(formData) {
     try {
         const token = await getToken();
-        const response = await axios.put(`/update-note/${formData.id}`, formData, {
+        const response = await axios.put(`/update-note/${formData._id}`, formData, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ export async function updateNote(formData) {
 export async function deleteNote(noteId) {
     try {
         const token = await getToken();
-        const response = await axios.delete(`/notes/${noteId}`, {
+        const response = await axios.delete(`/delete-note/${noteId}`, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
@@ -82,6 +82,22 @@ export async function deleteNote(noteId) {
         }
     } catch (error) {
         console.error('Delete Note Error:', error);
+        return error.response.data;
+    }
+}
+
+export async function togglePinNote(noteId) {
+    try {
+        const token = await getToken();
+        const response = await axios.put(`/toggle-pin/${noteId}`, {}, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Toggle Pin Note Error:', error);
         return error.response.data;
     }
 }

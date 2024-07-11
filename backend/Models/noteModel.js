@@ -4,8 +4,7 @@ import mongoose from "mongoose";
 const noteSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        default: null
+        ref: 'User'
     },
     date: {
         type: String,
@@ -31,7 +30,11 @@ const noteSchema = new mongoose.Schema({
         type: Array,
         default: null
     }
-});
+},
+    {
+        timestamps: true
+    }
+);
 
 const noteModel = mongoose.model("note", noteSchema);
 export default noteModel;

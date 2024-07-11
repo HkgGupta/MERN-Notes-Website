@@ -1,7 +1,11 @@
 .note-form-container {
-    max-width: 600px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 70px auto;
+    height: calc(100vh - 150px);
     padding: 20px;
+    max-width: 600px;
     background-color: #f4f4f4;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -23,8 +27,20 @@
     margin-bottom: 15px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: none;
+    border-bottom: 1px solid #2ecc71;
+    /* border-radius: 5px; */
+}
+
+.note-form-container form input:focus,
+.note-form-container form textarea:focus {
+    outline: 1px solid #218838;
+    border: none;
+}
+
+.note-form-container form input[type="color"] {
+    padding: 0 10px;
+    margin: 5px;
 }
 
 .note-form-container form input[type="checkbox"] {
@@ -60,4 +76,10 @@
 .note-form-container .success {
     color: #2ecc71;
     text-align: center;
+}
+
+@media (max-width:425px) {
+    .note-form-container {
+        justify-content: flex-start;
+    }
 }

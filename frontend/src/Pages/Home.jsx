@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
 import "../Styles/Home.css";
-import { getToken } from "../Components/auth";
+import { getToken } from "../Components/api/auth";
 import { useEffect, useState } from "react";
 
 const Home = () => {

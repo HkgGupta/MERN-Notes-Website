@@ -1,4 +1,4 @@
-let yourToken = '';
+let myToken = '';
 
 // Encode a string using Base64
 function encodeBase64(text) {
@@ -17,9 +17,9 @@ function decodeBase64(encodedText) {
 
 function setToken(token) {
     // encode token
-    yourToken = encodeBase64(token);
+    myToken = encodeBase64(token);
     // save encoded token to localStorage
-    localStorage.setItem('user', yourToken);
+    localStorage.setItem('user', myToken);
 }
 
 function getToken() {

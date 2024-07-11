@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoClose, IoMenu } from "react-icons/io5";
 import "../Styles/NavBar.css";
-import { fetchDetails } from "./FetchAPI";
-import { getToken } from "./auth";
+import { fetchDetails } from "./api/FetchAPI";
+import { getToken } from "./api/auth";
 
 
 const Navbar = (props) => {
@@ -21,7 +21,6 @@ const Navbar = (props) => {
             setIsLoggedIn(true);
         } else {
             setIsLoggedIn(false);
-            navigate("/login");
         }
     }, []);
 
@@ -65,6 +64,7 @@ const Navbar = (props) => {
 
     const logout = () => {
         localStorage.removeItem("user");
+        navigate("/login");
     };
 
     return (
