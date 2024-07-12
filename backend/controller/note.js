@@ -8,7 +8,8 @@ export const getAllNote = async (req, res) => {
         const notes = await noteModel.find({ userId });
         res.status(201).json({
             count: notes.length,
-            notes: notes
+            notes: notes,
+            success_message: 'Notes fetched successfully'
         });
     } catch (error) {
         res.status(400).json({
@@ -41,8 +42,6 @@ export const newNote = async (req, res) => {
         const userId = req.userInfo;
         const title = req.body.title;
         const desc = req.body.desc;
-        const dateTime = new Date();
-        const date = dateTime.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
         const pinned = req.body.pinned;
         const color = req.body.color;
         const tags = req.body.tags;
@@ -51,7 +50,6 @@ export const newNote = async (req, res) => {
             userId,
             title,
             desc,
-            date,
             pinned,
             color,
             tags
@@ -76,14 +74,11 @@ export const updateNote = async (req, res) => {
         const userId = req.userInfo;
         const noteId = req.params.noteId;
         const { title, desc, color, tags, pinned } = req.body;
-        const dateTime = new Date();
-        const date = dateTime.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
         const note = await noteModel.findOne({ _id: noteId });
 
         if (note && note.userId.equals(userId)) {
             note.title = title;
             note.desc = desc;
-            note.date = date;
             note.color = color;
             note.pinned = pinned;
             note.tags = tags;

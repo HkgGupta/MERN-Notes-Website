@@ -17,7 +17,8 @@ export const userDetails = async (req, res) => {
             });
         }
         return res.status(200).json({
-            success_message: user
+            user,
+            success_message: "User Found"
         });
     } catch (error) {
         return res.status(400).json({
@@ -309,8 +310,7 @@ export const updateUserPassword = async (req, res) => {
                 await user.save();
 
                 return res.status(200).json({
-                    success_message: 'Password updated successfully',
-                    user
+                    success_message: 'Password updated successfully'
                 });
             }
         }

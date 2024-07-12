@@ -8,6 +8,8 @@ import axios from './axiosConfig';
 
 import './App.css';
 import Create_Update_Note from './Pages/Create-Update-Note';
+import Profile from './Pages/Profile';
+import Features from './Pages/Features';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/create-note" element={<Create_Update_Note />} />
                 <Route path="/update-note/:id" element={<Create_Update_Note />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/features" element={<Features />} />
                 <Route path="*" element={<Error404 />} />
             </Routes>
         </Router>

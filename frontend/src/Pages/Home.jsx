@@ -27,7 +27,7 @@ const Home = () => {
                     <h2>Just write your notes forever.</h2>
                     <div>
                         <Link to={isLoggedIn ? "/dashboard" : "/login"}>
-                            <button>Get Started</button>
+                            <button className="get-started-btn">Get Started</button>
                         </Link>
                     </div>
                 </section>

@@ -33,6 +33,34 @@ export async function fetchDetails() {
     }
 }
 
+export const updateUserDetails = async (userDetails) => {
+    const token = await getToken();
+    const formData = new FormData();
+    formData.append('name', userDetails.name);
+    formData.append('phone', userDetails.phone);
+    if (userDetails.photo) {
+        formData.append('photo', userDetails.photo);
+    }
+
+    const response = await axios.put(`/update`, formData, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response.data;
+};
+
+export const updateUserPassword = async (passwords) => {
+    const token = await getToken();
+    const response = await axios.put(`/update-password`, passwords, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    return response.data;
+};
+
 export async function createNote(formData) {
     try {
         const token = await getToken();

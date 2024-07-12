@@ -35,11 +35,14 @@ const Dashboard = () => {
     const fetchUserNotes = async () => {
         try {
             const notesData = await fetchNotes();
-
-            const pinnedNotes = notesData.notes.filter(note => note.pinned);
-            const unpinnedNotes = notesData.notes.filter(note => !note.pinned);
-
-            setNotes([...pinnedNotes, ...unpinnedNotes]);
+            if (notesData.success_message) {
+                const pinnedNotes = notesData.notes.filter(note => note.pinned);
+                const unpinnedNotes = notesData.notes.filter(note => !note.pinned);
+                setNotes([...pinnedNotes, ...unpinnedNotes]);
+            }
+            else {
+                localStorage.removeItem("user");
+            }
             setErrorMessage("");
         } catch (error) {
             setErrorMessage(error.message);

@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use("/user", userRoute);
+app.use("/api/user", userRoute);
 
 app.use("/user-image", express.static('images/userImage'));
 

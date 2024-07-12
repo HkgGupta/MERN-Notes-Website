@@ -107,7 +107,7 @@ main * {
     font-size: 1em;
 }
 
-button {
+.get-started-btn {
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
@@ -119,7 +119,7 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.get-started-btn:hover {
     background-color: #0056b3;
 }
 
@@ -147,7 +147,7 @@ button:hover {
     }
 }
 
-@media (max-width : 485px){
+@media (max-width : 485px) {
     .hero h1 {
         font-size: 1.5em;
     }

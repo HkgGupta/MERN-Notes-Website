@@ -29,9 +29,14 @@ const Navbar = (props) => {
             if (isLoggedIn) {
                 try {
                     const userDetails = await fetchDetails();
-                    setUserName(userDetails.success_message.name);
-                    const photo = userDetails.success_message.photo;
-                    setUserImage(`data:${photo[0].mimetype};base64,${photo[0].data}`);
+                    if (userDetails.success_message) {
+                        setUserName(userDetails.user.name);
+                        const photo = userDetails.user.photo;
+                        setUserImage(`data:${photo[0].mimetype};base64,${photo[0].data}`);
+                    }
+                    else {
+                        localStorage.removeItem("user");
+                    }
                 } catch (error) {
                     console.error('Failed to fetch user details:', error);
                 }
@@ -71,6 +76,7 @@ const Navbar = (props) => {
         <header className="header" style={{ background: props.bg || "" }}>
             <nav className="nav container">
                 <NavLink to="/" className="nav__logo">
+                    <img src="logo.png" alt="NoteBox" className="nav__logo-img" />
                     NoteBox
                 </NavLink>
 
@@ -89,11 +95,19 @@ const Navbar = (props) => {
 
                 <div className={`nav__menu ${showMenu ? "show-menu" : ""}`} id="nav-menu">
                     <ul className="nav__list">
-                        <li className="nav__item">
-                            <NavLink to="/" className="nav__link" onClick={closeMenuOnMobile}>
-                                Home
-                            </NavLink>
-                        </li>
+                        {isLoggedIn ? (
+                            <li className="nav__item">
+                                <NavLink to="/dashboard" className="nav__link" onClick={closeMenuOnMobile} style={{ textDecoration: "underline" }}>
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                        ) : (
+                            <li className="nav__item">
+                                <NavLink to="/" className="nav__link" onClick={closeMenuOnMobile}>
+                                    Home
+                                </NavLink>
+                            </li>
+                        )}
                         <li className="nav__item">
                             <NavLink to="/features" className="nav__link" onClick={closeMenuOnMobile}>
                                 Features
@@ -117,7 +131,7 @@ const Navbar = (props) => {
                                 </div>
                                 <div className={`option ${showOptions ? "show" : ""}`}>
                                     <NavLink to="/profile" onClick={closeMenuOnMobile}>Profile</NavLink>
-                                    <NavLink to="/login" className="logout" onClick={logout}>Logout</NavLink>
+                                    <NavLink to="/" className="logout" onClick={logout}>Logout</NavLink>
                                 </div>
                             </div>
                         ) : (

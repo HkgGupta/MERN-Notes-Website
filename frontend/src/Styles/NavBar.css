@@ -17,12 +17,19 @@
 }
 
 .nav__logo {
+    display: flex;
+    gap: 10px;
     color: #f39849;
     transition: color 0.4s;
     font-size: 2rem;
     font-family: "Dancing Script",
         cursive;
     text-shadow: 0px 2px 2px rgb(0, 0, 0);
+}
+
+.nav__logo-img {
+    width: 40px;
+    height: 40px;
 }
 
 .nav__toggle,

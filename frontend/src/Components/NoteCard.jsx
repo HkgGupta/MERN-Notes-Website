@@ -2,7 +2,11 @@ import "../Styles/NoteCard.css";
 import { FaEdit, FaTrash, FaThumbtack } from 'react-icons/fa';
 
 const NoteCard = ({ note, onEdit, onDelete, onTogglePin, onNoteClick }) => {
-    const { title, desc, date, pinned, color, tags } = note;
+    const { title, desc, pinned, color, tags, updatedAt } = note;
+
+    const formatDate = (date) => {
+        return new Date(date).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    };
 
     return (
         <div className="note-card" style={{ borderTop: `10px solid ${color}` }} onClick={() => onNoteClick(note)}>
@@ -29,7 +33,7 @@ const NoteCard = ({ note, onEdit, onDelete, onTogglePin, onNoteClick }) => {
                         <span key={index} className="tag">{tag}</span>
                     ))}
                 </div>
-                <p className="note-card-date">{date}</p>
+                <p className="note-card-date">{formatDate(updatedAt)}</p>
             </div>
         </div>
     );

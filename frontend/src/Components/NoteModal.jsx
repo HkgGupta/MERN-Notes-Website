@@ -1,7 +1,11 @@
 import "../Styles/NoteModal.css";
 
 const NoteModal = ({ note, onClose }) => {
-    const { title, desc, date, color, tags } = note;
+    const { title, desc, color, tags, createdAt, updatedAt } = note;
+
+    const formatDate = (date) => {
+        return new Date(date).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    };
 
     return (
         <div className="note-modal">
@@ -20,9 +24,9 @@ const NoteModal = ({ note, onClose }) => {
                         ))}
                     </div>
                     <h3>Created At</h3>
-                    <p>{date}</p>
+                    <p>{formatDate(createdAt)}</p>
                     <h3>Last Updated At</h3>
-                    <p>{date}</p>
+                    <p>{formatDate(updatedAt)}</p>
                 </div>
             </div>
         </div>
