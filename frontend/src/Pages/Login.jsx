@@ -48,7 +48,7 @@ const Login = () => {
       navigate("/dashboard");
 
     } catch (error) {
-      setErrorMessage(error.response.data.error_message);
+      setErrorMessage(error);
       setisDisableSubmit(false);
     }
   };

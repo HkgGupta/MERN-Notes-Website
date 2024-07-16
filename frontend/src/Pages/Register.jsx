@@ -56,8 +56,8 @@ const Register = () => {
             setShowOTP(true);
             setisDisableSubmit(false);
         } catch (error) {
-            setErrorMessage(error.response.data.error_message);
             setisDisableSubmit(false);
+            setErrorMessage(error);
         }
     };
 
@@ -69,7 +69,7 @@ const Register = () => {
             setSuccessMessage(response.data.success_message);
             navigate("/login", { state: { message: response.data.success_message } });
         } catch (error) {
-            setErrorMessage(error.response.data.error_message);
+            setErrorMessage(error);
         }
     };
 
@@ -80,7 +80,7 @@ const Register = () => {
             await axios.post("/resend-otp", { userId });
             setSuccessMessage("OTP resent successfully");
         } catch (error) {
-            setErrorMessage(error.response.data.error_message);
+            setErrorMessage(error);
         }
     };
 
