@@ -47,7 +47,7 @@ Before running the application, make sure you have the following installed:
 
 3.  **Set up environment variables**
 
-    - Create `.env` files in backend/ directory.
+    - Create `.env` files in `backend/` directory.
 
     - In `backend/.env`, add:
 

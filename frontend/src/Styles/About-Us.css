@@ -1,0 +1,65 @@
+.about-us {
+    margin: 60px 0 40px 0;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.about-us-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #007BFF;
+    text-align: center;
+}
+
+.about-us section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.about-us h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.about-us p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.about-us a:hover {
+    text-decoration: underline;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.grid-item p {
+    font-size: 1em;
+    color: #666;
+    text-align: left;
+}
+
+@media (max-width: 425px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}

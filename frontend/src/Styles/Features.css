@@ -11,6 +11,8 @@
 .features-title {
     font-size: 36px;
     margin-bottom: 20px;
+    color: #007BFF;
+    text-align: center;
 }
 
 .features-container {

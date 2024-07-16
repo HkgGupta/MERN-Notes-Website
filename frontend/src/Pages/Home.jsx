@@ -21,7 +21,7 @@ const Home = () => {
     return (
         <div>
             <NavBar />
-            <main>
+            <main className="home">
                 <section className="hero">
                     <h1>Start something that matters</h1>
                     <h2>Just write your notes forever.</h2>
