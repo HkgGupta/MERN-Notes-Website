@@ -5,6 +5,8 @@ import "../Styles/NavBar.css";
 import { fetchDetails } from "./api/FetchAPI";
 import { getToken } from "./api/auth";
 
+import Logo from "../assets/logo.png";
+
 
 const Navbar = (props) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -76,7 +78,7 @@ const Navbar = (props) => {
         <header className="header" style={{ background: props.bg || "" }}>
             <nav className="nav container">
                 <NavLink to="/" className="nav__logo">
-                    <img src="logo.png" alt="NoteBox" className="nav__logo-img" />
+                    <img src={Logo} alt="NoteBox" className="nav__logo-img" />
                     NoteBox
                 </NavLink>
 

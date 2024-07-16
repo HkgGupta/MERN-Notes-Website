@@ -21,10 +21,9 @@
 /* Welcome Section */
 .welcome-section {
     width: 50%;
-    background: url(bg2.svg);
+    background: url('../assets/bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
-    /* background: linear-gradient(45deg, #6e33f1, #b449ff); */
     color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
