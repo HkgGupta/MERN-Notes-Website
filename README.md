@@ -54,7 +54,7 @@ Before running the application, make sure you have the following installed:
 
     ```
     PORT=3000
-    DB_LOCAL="your_mongodb_url"
+    DB_URL="your_mongodb_url"
     USER_SECRET_KEY='your_secret_key'
     NODEMAILER_USER='your_nodemailer_email'
     NODEMAILER_PASS='your_nodemailer_password'
@@ -117,9 +117,7 @@ The project structure is organized into frontend and backend directories:
 
 - `PORT:` The port on which the server runs.
 
-- `DB_LOCAL:` The local MongoDB connection string.
-
-- `DB_URL:` The MongoDB Atlas connection string.
+- `DB_URL:` The MongoDB Atlas connection string or Local DB url.
 
 - `USER_SECRET_KEY:` The secret key for user authentication.
 
