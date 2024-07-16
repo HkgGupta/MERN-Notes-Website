@@ -48,8 +48,13 @@ const Login = () => {
       navigate("/dashboard");
 
     } catch (error) {
-      setErrorMessage(error);
-      setisDisableSubmit(false);
+      if (error.response) {
+        setErrorMessage(error.response.data.error_message);
+      } else if (error.request) {
+        setErrorMessage("Network error. Please try again later.");
+      } else {
+        setErrorMessage("Unexpected error. Please try again later.");
+      }
     }
   };
 

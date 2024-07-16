@@ -57,7 +57,13 @@ const Register = () => {
             setisDisableSubmit(false);
         } catch (error) {
             setisDisableSubmit(false);
-            setErrorMessage(error);
+            if (error.response) {
+                setErrorMessage(error.response.data.error_message);
+            } else if (error.request) {
+                setErrorMessage("Network error. Please try again later.");
+            } else {
+                setErrorMessage("Unexpected error. Please try again later.");
+            }
         }
     };
 
@@ -69,7 +75,13 @@ const Register = () => {
             setSuccessMessage(response.data.success_message);
             navigate("/login", { state: { message: response.data.success_message } });
         } catch (error) {
-            setErrorMessage(error);
+            if (error.response) {
+                setErrorMessage(error.response.data.error_message);
+            } else if (error.request) {
+                setErrorMessage("Network error. Please try again later.");
+            } else {
+                setErrorMessage("Unexpected error. Please try again later.");
+            }
         }
     };
 
@@ -80,7 +92,13 @@ const Register = () => {
             await axios.post("/resend-otp", { userId });
             setSuccessMessage("OTP resent successfully");
         } catch (error) {
-            setErrorMessage(error);
+            if (error.response) {
+                setErrorMessage(error.response.data.error_message);
+            } else if (error.request) {
+                setErrorMessage("Network error. Please try again later.");
+            } else {
+                setErrorMessage("Unexpected error. Please try again later.");
+            }
         }
     };
 
