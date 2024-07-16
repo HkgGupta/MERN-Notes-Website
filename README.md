@@ -1,7 +1,8 @@
 ## NoteBox - A MERN Stack Note-Taking Application
 
 NoteBox is a MERN (MongoDB, Express.js, React.js, Node.js) stack application for managing notes. It allows users to create, view, update, and delete notes securely.
-
+### Live link 1 : [https://notebox-ui.netlify.app/](https://notebox-ui.netlify.app/)  
+### Live link 2 : [https://notebox-ui.onrender.app/](https://notebox-ui.onrender.com/)
 ### Features
 
 - User Authentication (Register, Login, Logout)
