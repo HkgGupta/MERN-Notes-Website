@@ -1,5 +1,5 @@
 .home {
-    background: url(https://i0.wp.com/www.alphr.com/wp-content/uploads/2022/10/How-to-Make-a-Sticky-Note-in-Windows.png) no-repeat center;
+    background: url(../assets/home-bg.jpg) no-repeat center;
     background-size: cover;
     display: flex;
     flex-direction: column;
